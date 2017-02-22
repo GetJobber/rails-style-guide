@@ -833,6 +833,27 @@ when you need to retrieve a single record by some attributes.
   Mitigate code duplication by using partial templates and layouts.
 <sup>[[link](#partials)]</sup>
 
+* <a name="forms"></a>
+  When creating a new form always name the FormBuilder variable f.
+  If the form is a nested sub-form, please give it a descriptive name.
+  When passing a form builder to a partial always pass it as F
+
+  ```
+    # bad
+    <%= form_for @work_order do |work_order_form| %>
+      <%= fields_for :address do |f2| %>
+      <% end %>
+    <% end %>
+
+    # good
+    <%= form_for @work_order do |f| %>
+      <%= fields_for :address do |address_field| %>
+      <% end %>
+    <% end %>
+  ```
+
+<sup>[[link](#forms)]</sup>
+
 ## Internationalization
 
 * <a name="locale-texts"></a>
